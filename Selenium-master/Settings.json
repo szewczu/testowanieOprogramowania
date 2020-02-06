@@ -1,0 +1,29 @@
+﻿{
+  "Url": {
+    "Base": "https://www.seleniumeasy.com/test/",
+    "Page": {
+      "Input": {
+        "BasicForm": "basic-first-form-demo.html",
+        "CheckBox": "basic-checkbox-demo.html",
+        "RadioButton": "basic-radiobutton-demo.html",
+        "DropdownList": "basic-select-dropdown-demo.html",
+        "AjaxForm": "ajax-form-submit-demo.html"
+
+      },
+      "DataPicker": {
+        "BootstrapDatePicker": "bootstrap-date-picker-demo.html"
+      },
+      "AlertsAndModals": {
+        "BootstrapAlerts": "bootstrap-alert-messages-demo.html",
+        "BootstrapModals": "bootstrap-modal-demo.html"
+      },
+      "ListBox": {
+        "BootstrapListBox": "bootstrap-dual-list-box-demo.html",
+        "DataListFilter": "data-list-filter-demo.html"
+      },
+      "Table": {
+        "TablePagination": "table-pagination-demo.html"
+      }
+    }
+  }
+}
