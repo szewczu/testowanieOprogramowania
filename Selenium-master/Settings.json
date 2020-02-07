@@ -22,7 +22,8 @@
         "DataListFilter": "data-list-filter-demo.html"
       },
       "Table": {
-        "TablePagination": "table-pagination-demo.html"
+        "TablePagination": "table-pagination-demo.html",
+        "TableFilter": "table-records-filter-demo.html"
       }
     }
   }

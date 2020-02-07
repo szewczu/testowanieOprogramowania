@@ -4,6 +4,7 @@ using System.IO;
 using Newtonsoft.Json.Linq;
 using OpenQA.Selenium;
 using System;
+using Xunit;
 
 namespace SeleniumApplication.Shared
 {
@@ -11,14 +12,12 @@ namespace SeleniumApplication.Shared
     {
         public static ChromeDriver RunPage(string pageUrl)
         {
-            
             string url = GetPage(pageUrl);
             ChromeOptions options = new ChromeOptions();
             options.AddArgument("headless");
             var driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl(url);
             return driver;
-
         }
 
         public static ChromeDriver RunPageWithOpenedBrowser(string pageUrl)
@@ -62,6 +61,18 @@ namespace SeleniumApplication.Shared
         public static string GetValueFromDictionary(Dictionary<string, string> dict, Enum key)
         {
             return dict[key.ToString()];
+        }
+
+        public static void AssertTrue(ChromeDriver driver, bool condition, string message)
+        {
+            driver.Quit();
+            Assert.True(condition, message);
+        }
+
+        public static void AssertFalse(ChromeDriver driver, bool condition, string message)
+        {
+            driver.Quit();
+            Assert.False(condition, message);
         }
 
     }

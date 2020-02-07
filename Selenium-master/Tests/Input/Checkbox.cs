@@ -15,8 +15,8 @@ namespace SeleniumApplication.Tests.Input
         {
             ChromeDriver driver = Helpers.RunPage(_pageObjects.PageUrl);
             string url = driver.Url;
-            driver.Dispose();
-            Assert.True(url == "https://www.seleniumeasy.com/test/basic-checkbox-demo.html", "Page not exist");
+             
+            Helpers.AssertTrue(driver,url == "https://www.seleniumeasy.com/test/basic-checkbox-demo.html", "Page not exist");
         }
 
         [Fact]
@@ -27,8 +27,8 @@ namespace SeleniumApplication.Tests.Input
             _pageObjects.GetCheckBoxAge(driver).Click();
             string result = _pageObjects.GetMessageSelectedAge(driver).Text;
 
-            driver.Dispose();
-            Assert.True(result == "Success - Check box is checked", "Message is not correct");
+             
+            Helpers.AssertTrue(driver,result == "Success - Check box is checked", "Message is not correct");
         }
 
 
@@ -44,8 +44,8 @@ namespace SeleniumApplication.Tests.Input
             checkBox.Click();
             string result = Helpers.GetValue(_pageObjects.GetButtonCheck(driver));
 
-            driver.Dispose();
-            Assert.True(result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
+             
+            Helpers.AssertTrue(driver,result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
         }
 
         [Fact]
@@ -60,8 +60,8 @@ namespace SeleniumApplication.Tests.Input
 
             string result = Helpers.GetValue(_pageObjects.GetButtonCheck(driver));
 
-            driver.Dispose();
-            Assert.True(result == "Uncheck All", $"Message is not correct \n Current: {result} \n Expected: Check All");
+             
+            Helpers.AssertTrue(driver,result == "Uncheck All", $"Message is not correct \n Current: {result} \n Expected: Check All");
         }
 
         [Fact]
@@ -78,8 +78,8 @@ namespace SeleniumApplication.Tests.Input
 
             string result = Helpers.GetValue(_pageObjects.GetButtonCheck(driver));
 
-            driver.Dispose();
-            Assert.True(result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
+             
+            Helpers.AssertTrue(driver,result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
         }
 
         [Fact]
@@ -93,8 +93,8 @@ namespace SeleniumApplication.Tests.Input
 
             string result = Helpers.GetValue(_pageObjects.GetButtonCheck(driver));
 
-            driver.Dispose();
-            Assert.True(result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
+             
+            Helpers.AssertTrue(driver,result == "Check All", $"Message is not correct \n Current: {result} \n Expected: Check All");
         }
 
 
