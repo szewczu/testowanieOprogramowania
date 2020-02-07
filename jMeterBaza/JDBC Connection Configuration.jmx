@@ -38,24 +38,37 @@
             <stringProp name="checkQuery">select 1 from dual</stringProp>
             <stringProp name="connectionAge">5000</stringProp>
             <stringProp name="dataSource">test</stringProp>
-            <stringProp name="dbUrl">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7319683</stringProp>
+            <stringProp name="dbUrl">jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7321727</stringProp>
             <stringProp name="driver">com.mysql.jdbc.Driver</stringProp>
             <boolProp name="keepAlive">true</boolProp>
-            <stringProp name="password">C13wCkGJrA</stringProp>
+            <stringProp name="password">n6MKbzrBwW</stringProp>
             <stringProp name="poolMax">10</stringProp>
             <stringProp name="timeout">10000</stringProp>
             <stringProp name="transactionIsolation">DEFAULT</stringProp>
             <stringProp name="trimInterval">60000</stringProp>
-            <stringProp name="username">sql7319683</stringProp>
+            <stringProp name="username">sql7321727</stringProp>
             <boolProp name="preinit">false</boolProp>
             <stringProp name="initQuery"></stringProp>
             <stringProp name="connectionProperties"></stringProp>
           </JDBCDataSource>
           <hashTree/>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
+            <stringProp name="dataSource">test</stringProp>
+            <stringProp name="queryType">Select Statement</stringProp>
+            <stringProp name="query">select *;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable"></stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Konfiguracja plików CSV" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding">UTF-8</stringProp>
-            <stringProp name="filename">D:/studia/TestowanieOprogramowania/Zaliczenie/Completed-Projects-master/Produkt końcowy projektu jMeter2/Pobierane Dane.csv</stringProp>
+            <stringProp name="filename">C:/Users/Kamil Szewczyk/Desktop/testowanieG/jMeterBaza/Pobierane Dane.csv</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
@@ -69,7 +82,7 @@
 
 tempDefault = &quot;0&quot;;
 
-f = new FileOutputStream(&quot;D:\\studia\\TestowanieOprogramowania\\Zaliczenie\\Completed-Projects-master\\Produkt końcowy projektu jMeter2\\db_performance_Alert.txt&quot;, false);
+f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
 p = new PrintStream(f); 
 
 p.println( tempDefault );      
@@ -102,7 +115,7 @@ p.close();f.close();</stringProp>
 tempVar = &quot;Udało sie usunac&quot;;
 
 
-f = new FileOutputStream(&quot;D:\\studia\\TestowanieOprogramowania\\Zaliczenie\\Completed-Projects-master\\Produkt końcowy projektu jMeter2\\delete.txt&quot;, false);
+f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\delete.txt&quot;, false);
 p = new PrintStream(f); 
 
 p.println( tempVar );
@@ -138,7 +151,7 @@ tempVarWork = &quot;1&quot;;
 long responseTime = prev.getTime(); 
 
 if (responseTime &lt; 60) {
-	f = new FileOutputStream(&quot;D:\\studia\\TestowanieOprogramowania\\Zaliczenie\\Completed-Projects-master\\Produkt końcowy projektu jMeter2\\db_performance_Alert.txt&quot;, false);
+	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
 	p = new PrintStream(f);
      p.println( tempVarWork );  
      p.close();f.close();    
@@ -171,7 +184,7 @@ tempVarWork = &quot;1&quot;;
 long responseTime = prev.getTime();
 
 if (responseTime &lt; 60) {
-	f = new FileOutputStream(&quot;D:\\studia\\TestowanieOprogramowania\\Zaliczenie\\Completed-Projects-master\\Produkt końcowy projektu jMeter2\\db_performance_Alert.txt&quot;, false);
+	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
 	p = new PrintStream(f); 
      p.println( tempVarWork );   
      p.close();f.close();   
