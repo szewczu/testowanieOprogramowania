@@ -13,17 +13,19 @@ namespace SeleniumApplication.Shared
         public static ChromeDriver RunPage(string pageUrl)
         {
             string url = GetPage(pageUrl);
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("headless");
-            var driver = new ChromeDriver(options);
+            var driver = new ChromeDriver();
             driver.Navigate().GoToUrl(url);
             return driver;
+
         }
 
         public static ChromeDriver RunPageWithOpenedBrowser(string pageUrl)
         {
+            
             string url = GetPage(pageUrl);
-            var driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("headless");
+            var driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl(url);
             return driver;
         }

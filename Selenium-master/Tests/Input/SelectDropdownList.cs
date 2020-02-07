@@ -59,24 +59,32 @@ namespace SeleniumApplication.Tests.Input
         public void SelectAllValueFromMultiSelectDropdown()
         {
             ChromeDriver driver = Helpers.RunPage(_pageObjects.PageUrl);
-            var listOfMultiSelectValues = _pageObjects.ListOfMultiSelectValue;
             string expectedResult = "Options selected are : California,Florida,New Jersey,New York,Ohio,Texas,Pennsylvania,Washington";
 
-            var multiSelect = _pageObjects.GetSelectMultiListDropdown(driver);
             Actions action = new Actions(driver);
-            action.KeyDown(Keys.LeftControl);
-            for (int i = 0; i < listOfMultiSelectValues.Count(); i++)
-            {
-                multiSelect.SelectByValue(listOfMultiSelectValues.ElementAt(i));
-            }
 
-            action.KeyUp(Keys.LeftControl);
+            IWebElement select1 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[1]"));
+            IWebElement select2 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[2]"));
+            IWebElement select3 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[3]"));
+            IWebElement select4 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[4]"));
+            IWebElement select5 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[5]"));
+            IWebElement select6 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[6]"));
+            IWebElement select7 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[7]"));
+            IWebElement select8 = driver.FindElement(By.XPath("//*[@id='multi-select']/option[8]"));
+
+
+            action.KeyDown(Keys.Control).Click(select1).Click(select1).Click(select2).Click(select3)
+                .Click(select4).Click(select5).Click(select6).Click(select7).Click(select8).Build().Perform();
+
+
+
+
             _pageObjects.GetButtonGetAllSelected(driver).Click();
 
             string result = _pageObjects.GetDisplayMultiSelectDropdown(driver).Text;
 
-             
-            Helpers.AssertTrue(driver,result == expectedResult, $"Expected:{expectedResult}\nCurrent:{result}");
+            driver.Dispose();
+            Assert.True(result == expectedResult, $"Expected:{expectedResult}\nCurrent:{result}");
         }
 
 
