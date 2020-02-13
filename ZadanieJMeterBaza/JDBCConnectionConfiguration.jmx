@@ -11,24 +11,20 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="false">
-        <stringProp name="ConstantTimer.delay">500000</stringProp>
-      </ConstantTimer>
-      <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Project Database" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">5</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">4</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
         <stringProp name="ThreadGroup.ramp_time">120</stringProp>
         <longProp name="ThreadGroup.start_time">1517318910000</longProp>
         <longProp name="ThreadGroup.end_time">1517405373000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">1</stringProp>
-        <stringProp name="ThreadGroup.delay">1</stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.duration">120</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
       </ThreadGroup>
       <hashTree>
         <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="true"/>
@@ -52,23 +48,10 @@
             <stringProp name="connectionProperties"></stringProp>
           </JDBCDataSource>
           <hashTree/>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Request" enabled="true">
-            <stringProp name="dataSource">test</stringProp>
-            <stringProp name="queryType">Select Statement</stringProp>
-            <stringProp name="query">select *;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-          </JDBCSampler>
-          <hashTree/>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Konfiguracja plików CSV" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding">UTF-8</stringProp>
-            <stringProp name="filename">C:/Users/Kamil Szewczyk/Desktop/testowanieG/jMeterBaza/Pobierane Dane.csv</stringProp>
+            <stringProp name="filename">C:\Users\Kamil Szewczyk\Desktop\testowanieG\ZadanieJMeterBaza\Pobierane Dane.csv</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">false</boolProp>
             <boolProp name="recycle">true</boolProp>
@@ -77,12 +60,32 @@
             <stringProp name="variableNames">firstname</stringProp>
           </CSVDataSet>
           <hashTree/>
-          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanShell Sampler" enabled="true">
+          <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="Zmienne zdefiniowane przez użytkownika" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="SprawdzeniePolaczenia" elementType="Argument">
+                <stringProp name="Argument.name">SprawdzeniePolaczenia</stringProp>
+                <stringProp name="Argument.value">C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\ZadanieJMeterBaza\\Status.txt</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="PolaczeniePoprawne" elementType="Argument">
+                <stringProp name="Argument.name">PolaczeniePoprawne</stringProp>
+                <stringProp name="Argument.value">DB_UP_AND_RUNNING</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+              <elementProp name="NieudanePolaczenie" elementType="Argument">
+                <stringProp name="Argument.name">NieudanePolaczenie</stringProp>
+                <stringProp name="Argument.value">DB_FAILED</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </Arguments>
+          <hashTree/>
+          <BeanShellSampler guiclass="BeanShellSamplerGui" testclass="BeanShellSampler" testname="BeanSchellSampler" enabled="true">
             <stringProp name="BeanShellSampler.query">import org.apache.jmeter.services.FileServer;
 
 tempDefault = &quot;0&quot;;
 
-f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
+f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\ZadanieJMeterBaza\\db_performance_Alert.txt&quot;, false);
 p = new PrintStream(f); 
 
 p.println( tempDefault );      
@@ -92,41 +95,28 @@ p.close();f.close();</stringProp>
             <stringProp name="BeanShellSampler.parameters"></stringProp>
             <boolProp name="BeanShellSampler.resetInterpreter">false</boolProp>
           </BeanShellSampler>
-          <hashTree/>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Delete record" enabled="true">
-            <stringProp name="dataSource">test</stringProp>
-            <stringProp name="queryType">Update Statement</stringProp>
-            <stringProp name="query">delete from Persons where FirstName=&apos;Waldek&apos;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-          </JDBCSampler>
           <hashTree>
-            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="Post-procesor BeanShell" enabled="true">
-              <boolProp name="resetInterpreter">false</boolProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="script">import org.apache.jmeter.services.FileServer;
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query">FileWriter fw = new FileWriter(&quot;${SprawdzeniePolaczenia}&quot;, true);
 
-tempVar = &quot;Udało sie usunac&quot;;
-
-
-f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\delete.txt&quot;, false);
-p = new PrintStream(f); 
-
-p.println( tempVar );
-
-p.close();f.close();</stringProp>
-            </BeanShellPostProcessor>
+if(ResponseCode.equals(&quot;200&quot;))
+{
+	fw.write(&quot;${PolaczeniePoprawne}&quot; + &quot;\n&quot;);
+}
+else
+{
+	fw.write(&quot;${NieudanePolaczenie}&quot; + &quot;\n&quot;);
+}
+fw.close();</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
             <hashTree/>
           </hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Insert into DB from CSV" enabled="false">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Insert into DB from CSV" enabled="true">
             <stringProp name="dataSource">test</stringProp>
-            <stringProp name="query">update Persons
+            <stringProp name="query">update Person
 set FirstName=&quot;Kolodziej&quot;
 where SecondName=&quot;${firstname}&quot;;</stringProp>
             <stringProp name="queryArguments"></stringProp>
@@ -151,7 +141,7 @@ tempVarWork = &quot;1&quot;;
 long responseTime = prev.getTime(); 
 
 if (responseTime &lt; 60) {
-	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
+	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\ZadanieJMeterBaza\\db_performance_Alert.txt&quot;, false);
 	p = new PrintStream(f);
      p.println( tempVarWork );  
      p.close();f.close();    
@@ -159,9 +149,9 @@ if (responseTime &lt; 60) {
             </BeanShellPostProcessor>
             <hashTree/>
           </hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Select into DB from CSV" enabled="false">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Select into DB from CSV" enabled="true">
             <stringProp name="dataSource">test</stringProp>
-            <stringProp name="query">select Street from Persons where SecondName=&quot;${firstname}&quot;;</stringProp>
+            <stringProp name="query">select Street from Person where SecondName=&quot;${firstname}&quot;;</stringProp>
             <stringProp name="queryArguments"></stringProp>
             <stringProp name="queryArgumentsTypes"></stringProp>
             <stringProp name="queryTimeout"></stringProp>
@@ -184,7 +174,7 @@ tempVarWork = &quot;1&quot;;
 long responseTime = prev.getTime();
 
 if (responseTime &lt; 60) {
-	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\jMeterBaza\\db_performance_Alert.txt&quot;, false);
+	f = new FileOutputStream(&quot;C:\\Users\\Kamil Szewczyk\\Desktop\\testowanieG\\ZadanieJMeterBaza\\db_performance_Alert.txt&quot;, false);
 	p = new PrintStream(f); 
      p.println( tempVarWork );   
      p.close();f.close();   
@@ -192,6 +182,19 @@ if (responseTime &lt; 60) {
             </BeanShellPostProcessor>
             <hashTree/>
           </hashTree>
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="JDBC Delete data" enabled="true">
+            <stringProp name="dataSource">test</stringProp>
+            <stringProp name="queryType">Update Statement</stringProp>
+            <stringProp name="query">delete from Person where FirstName=&quot;Tomasz&quot; ;</stringProp>
+            <stringProp name="queryArguments"></stringProp>
+            <stringProp name="queryArgumentsTypes"></stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <stringProp name="resultVariable">Blad</stringProp>
+            <stringProp name="queryTimeout"></stringProp>
+            <stringProp name="resultSetMaxRows"></stringProp>
+            <stringProp name="resultSetHandler">Store as String</stringProp>
+          </JDBCSampler>
+          <hashTree/>
           <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
             <boolProp name="ResultCollector.error_logging">false</boolProp>
             <objProp>
@@ -263,12 +266,6 @@ if (responseTime &lt; 60) {
             </objProp>
             <stringProp name="filename"></stringProp>
           </ResultCollector>
-          <hashTree/>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Test Action" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">1200</stringProp>
-          </TestAction>
           <hashTree/>
         </hashTree>
       </hashTree>
